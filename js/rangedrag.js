@@ -183,7 +183,7 @@ $("#lfknob")[0].onmousedown = function(e){
         setTimeout(function(){
           nextcolor = nextcolorArr[oldUpindex/5]
           nextposter = "url(../images/"+posterArr[oldUpindex/5]+".jpg)";
-          nextbg = "url(../images/"+nextbgArr[oldUpindex/5]+".png)";
+          nextbg = "url(../images/"+nextbgArr[oldUpindex/5]+".jpg)";
           nextbgcover = nextbgcoverArr[oldUpindex/5];
           document.documentElement.style.setProperty('--poster2', nextposter);
           document.documentElement.style.setProperty('--nextcardcolor', nextcolor);
@@ -302,7 +302,7 @@ $("#lfknob")[0].onmousedown = function(e){
 
           nextcolor = nextcolorArr[oldUpindex/5]
           nextposter = "url(../images/"+posterArr[oldUpindex/5]+".jpg)";
-          nextbg = "url(../images/"+nextbgArr[oldUpindex/5]+".png)";
+          nextbg = "url(../images/"+nextbgArr[oldUpindex/5]+".jpg)";
           nextbgcover = nextbgcoverArr[oldUpindex/5];
           document.documentElement.style.setProperty('--poster2', nextposter);
           document.documentElement.style.setProperty('--nextcardcolor', nextcolor);

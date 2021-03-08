@@ -4,6 +4,35 @@
 	box-sizing: border-box;
 	/* cursor: none; */
 }
+:root{
+	/* info文字颜色 */
+	--color1: #0b3954;
+	--color2: #bfd7ea;
+	/* infoclose颜色 */
+	--color3: #2e7fb0;
+	--color4: #c1e4e9;
+	--color5: #4196a7;
+	/* 背景层颜色 */
+	--color6: #98b7d6;
+	/* bgcircle */
+	--color7: #dfeef6;
+	/* poster卡片颜色 */
+	--color8: #1e638d;
+	/* 下一张卡片颜色 */
+	--color9: #82a7af;
+	/* span2颜色（color1的减淡） */
+	--color10: #23668d;
+	/* 下一轮卡片颜色(下一轮color8) */
+	--nextcardcolor: #789d6f;
+	--knob: #448aca;
+	--poster: url('../images/tubomi.jpg');
+	--poster2: url('../images/lemon.jpg');
+	--bg: url(../images/tubomibg.jpg);
+	--nextbg: none;
+	--nextbgcover: none;
+	--wave1: url(../images/waveblue1.svg);
+	--wave2: url(../images/waveblue2.svg);
+}
 html,body {
 	width: 100%;
 	height: 100%;
@@ -31,7 +60,7 @@ html,body {
 	transform: translate(-50%,-50%);
 	width: 12px;
 	height: 2px;
-	background-color:#2e7fb0;
+	background-color:var(--color3);
 	display: none;
 	transition: all 1s
 }
@@ -39,7 +68,7 @@ html,body {
 	content: "";
 	width: 12px;
 	height: 2px;
-	background-color: #2e7fb0;
+	background-color: var(--color3);
 	transform: rotate(90deg);
 	position: absolute;
 	top: 0;
@@ -47,40 +76,78 @@ html,body {
 	display: block;
 	transition: transform 1s
 }
-.bg {
+#morph {
+
+	width: 1920px;
+	height: 1080px;
+	position: absolute;
+	pointer-events: none;
+	left: -120px;
+	top: -85px;
+	opacity: 0;
+	transform: opacity 0.5s
+}
+#morph .morph {
+	fill: var(--color9)
+}
+
+canvas#noise {
+	height: 100%;
+	width: 100%;
+	pointer-events: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	opacity: 0.05;
+	border-radius: 50px
+}
+.bg,.bg2 {
+	position: absolute;
+	left: 0;
+	top: 0;
 	width: 100%;
 	height: 100%;
-	background-image: url(../images/tubomibg.jpg);
+	background-image: var(--bg);
 	-webkit-background-size: cover;
 	background-size: cover;
 	background-position: bottom center;
+	z-index: -999
 
+}
+.bg2 {
+	background-image: var(--nextbg);
+	transition: opacity 0.5s
 }
 a {
 	text-decoration: none;
 	white-space:nowrap;
 	/* cursor: default */
 } 
-.bgcover {
+.bgcover,.bgcover2 {
 	width: 100%;
 	height: 100%;
 	position: absolute;
-	background-color: rgba(152,183,214,0.59);
-	
+	background-color: var(--color6);
+	opacity: 0.59;
+	/* transition: opacity 1s; */
+	/* visibility: visible !important; */
+}
+.bgcover2 {
+	background-color: var(--nextbgcover);
 }
 .logo {
 	position: absolute;
 	left: 7%;
-	top: 6%;
+	top: 7%;
 	width: 90px;
 	height: 90px;
-	border: 1px solid #000;
+	/* border: 1px solid #000; */
 	background: url('../images/logo.png') 2px no-repeat;
 	background-size: 95%;
 	z-index: 1
 }
 .main {
-	width: 65%;
+	width: 64%;
 	height: 66%;
 	position: absolute;
 	left: 50%;
@@ -88,16 +155,43 @@ a {
 	transform: translate(-50%,-50%);
 	border-radius: 50px;
 	background-color: #fff;
-	box-shadow: 25px 15px 50px rgba(0,0,0,0.3)
+	box-shadow: 9px 14px 17px 5px rgba(0,0,0,0.3)
 }
-/* .main:hover .cursorWrapper {
-	width: 15px;
-	height: 15px;
-	border: 5px solid #1e638d;
+/* .main .cover {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 50px;
+	border: 1px solid orange;
+	z-index: 3;
+	overflow: hidden;
+	pointer-events: none
+	
+}
+.cover .coverall {
+	position: absolute;
+	width: 0%;
+	height: 100%;
+	background-color: black;
+	animation: cover 2s both;
 } */
+@keyframes cover {
+	0%{
+		left: 0;
+		width: 0;
+	}
+	50%{
+		left: 0;
+		width: 100%;
+	}
+	100%{
+		left: 100%;
+		width: 0;
+	}	
+}
 .bgpics {
 	position: relative;
-	border: 1px solid red;
+	/* border: 1px solid red; */
 	width: 50%;	
 	height: 100%;
 	overflow: hidden;
@@ -109,15 +203,16 @@ a {
 	width: 630px;
 	height: 630px;
 	border-radius: 50%;
-	background-color: #dfeef6;
+	background-color: var(--color7);
 	/* background-color: #000; */
 	position: absolute;
 	left: -180px;
 	top: -270px;
+	transition: background-color 1.5s cubic-bezier(0.71,0.12,0.34,0.97)
 }
 .bgpics #bgprofile {
 	position: absolute;
-	border: 1px solid green;
+	/* border: 1px solid green; */
 	width: 590px;
 	/* height: 100px; */
 	top: -84px;
@@ -132,33 +227,58 @@ a {
 }
 .tag {
 	position: absolute;
-	left: -4px;
-	top: 45px;
-	width: 185px;
+	top: 35px;
+	left: -13px;
+	transform-origin: 10% 50%;
+	/* border: 1px solid #000; */
+	width: 165px;
+	height: 40px;
+	transition:background-color 1.5s cubic-bezier(0.71,0.12,0.34,0.97) ;
+}
+.tagtop {
+	position: absolute;
+	left:0;
+	top: 0;
+	width: 160px;
 	height: 35px;
-	background-color: #2e7fb0;
-	border-radius: 0 8px 8px 0;
+	background-color: var(--color3);
+	border-radius: 50px 10px 10px 50px;
 	font-size: 22px;
 	font-family: "Krungthep";
 	font-weight: bold;
 	color: white;
 	text-align: center;
 	line-height: 35px;
-	letter-spacing: 3px
+	letter-spacing: 4px;
+	padding-left: 25px;
+	transition:background-color 1.5s cubic-bezier(0.71,0.12,0.34,0.97) ;
+	
 }
-.tag::before {
-	content: "";
+.tagbottom {
 	position: absolute;
-	left: 3px;
-	top:3px;
-	width: 185px;
-	height: 35px;
-	background-color: #0b3954;
-	border-radius: 0 8px 8px 0;
-	z-index: -1
+	left: 2px;
+	top:2px;
+	width: 162px;
+	height: 36px;
+	background-color: var(--color1);
+	border-radius: 50px 10px 10px 50px;
+	z-index: -1;
+	transition:background-color 1.5s cubic-bezier(0.71,0.12,0.34,0.97) ;
 }
 
-.musiccard {
+.tagcircle {
+	width: 14px;
+	height: 14px;
+	position: absolute;
+	left: 6px;
+	top: 10px;
+	border-radius: 50%;
+	z-index: 1;
+	
+	background-color: #fff;
+	/* border: 3px solid #000; */
+}
+.musiccard{
 	position: absolute;
 	width: 450px;
 	height: 100%;
@@ -166,24 +286,25 @@ a {
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%,-50%);
-	border: 1px solid #000;
+	/* border: 1px solid #000; */
 	/* z-index: -1 */
 
 
 }
 
-.musiccard .poster {
+.musiccard .poster{
 	width: 420px;
 	height: 420px;
 	position:absolute;
 	top: 80px;
 	left: 50%;
 	transform: translateX(-50%);
-	border: 20px solid #1e638d;
+	border: 20px solid var(--color8);
 	border-radius: 40px;
-	background: url('../images/tubomi.jpg');
+	background: var(--poster);
 	background-size: 110%;
-	background-position: bottom center;
+	background-position: 60% 50%;
+	transition: border 1.5s cubic-bezier(0.71,0.12,0.34,0.97)
 	
 }
 .musiccard::after {
@@ -193,35 +314,25 @@ a {
 	position: absolute;
 	top: 80px;
 	left: 50%;
-	border: 20px solid #82a7af;
+	border: 20px solid var(--color9);
+	/* background-color: var(--color9); */
+	transition: border 1.5s cubic-bezier(0.71,0.12,0.34,0.97);
 	border-radius: 40px;
 	z-index:-1;
-	transform-origin: 70% 70%;
-	transform: translateX(-50%) rotate(-3.5deg);
+	transform-origin: 50% 50%;
+	transform: translateX(-50.5%) rotate(-3.5deg);
 	box-sizing: border-box;
-	
+	background: var(--poster2);
+	background-size: 110%;
+	background-position: 60% 50%;
 }
-/* .musiccard .poster::before{
-	content: "";
-	display: block;
-	width: 435px;
-	height: 435px;
-	position: absolute;
-	top: -20px;
-	left: -20px;
-	transform-origin: center ;
-	border: 20px solid #82a7af;
-	border-radius: 40px;
-	box-sizing: border-box;
-	background-color: #fff;
-	z-index: -999	
-} */
+
 .musiccard #recorder {
 	position: absolute;
-	width: 110px;
-	height: 110px;
-	border: 1px solid #000;
-	top: 460px;
+	width: 92px;
+	height: 92px;
+	/* border: 1px solid #000; */
+	top: 450px;
 	left: 50%;
 	transform: translateX(-50%);
 	z-index: 1
@@ -232,7 +343,7 @@ a {
 	position: absolute;
 	width: 110px;
 	height: 110px;
-	border: 1px solid #000;
+	/* border: 1px solid #000; */
 	top: 460px;
 	left: 50%;
 	transform: translateX(-50%);
@@ -244,7 +355,7 @@ label {
 	position: absolute;
 	width: 110px;
 	height: 110px;
-	border: 1px solid #000;
+	/* border: 1px solid #000; */
 	top: 460px;
 	left: 50%;
 	transform: translateX(-50%);
@@ -255,7 +366,9 @@ label {
 	width: 100%;
 	height: 100%;
 	border-radius: 50%;
-	border: 12px solid #0b3954;
+	/* border: 12px solid var(--color1); */
+	box-shadow: 0px 0px 0px 1px #fff,
+	0px 0px 0px 8px #000;
 	background: #000;
 	transition: rotate 1s;
 
@@ -268,15 +381,15 @@ label {
 	background: url('../images/reflect.png');
 	background-size: cover;
 	position: fixed;
-	right: 24px;
-	top: 24px;
+	right: 13px;
+	top: 13px;
 	/* border: 1px solid red; */
 	transition: rotate 1s;
-	opacity: 0.8	
+	opacity: 1	
 
 }
 input[type=checkbox]:checked + #recorder .record::after {
-	transform-origin: -10px 30px;
+	transform-origin: -13px 32px;
 	animation: record_rotate 4s linear infinite ;
 	animation-fill-mode: both;
 	-webkit-animation-fill-mode: both;
@@ -311,14 +424,17 @@ input[type=checkbox]:checked + #recorder .record::after {
 }
 
 #recorder .needle {
+	/* border: 1px solid orange; */
 	position: absolute;
 	height: 4px;
-	width: 55px;
-	top: 45px;
-	left: 52px;
-	background-color: #b7dae5;
+	width: 56px;
+	top: 34px;
+	left: 42px;
+	background-color: var(--color2);
 	transform-origin: 100% 0;
-	transform: rotate(-51deg);
+	transform: rotate(-68deg);
+	transition: background-color 1.5s cubic-bezier(0.71,0.12,0.34,0.97)
+	
 }
 #recorder .needle::before{
 	content: "";
@@ -326,8 +442,9 @@ input[type=checkbox]:checked + #recorder .record::after {
 	height: 10px;
 	position: absolute;
 	top: -3px;
-	background-color: #b7dae5;
-	border-radius: 3px
+	background-color: var(--color2);
+	border-radius: 3px;
+	transition: background-color 1.5s cubic-bezier(0.71,0.12,0.34,0.97)
 }
 #recorder .needle::after {
 	content: "";
@@ -336,10 +453,11 @@ input[type=checkbox]:checked + #recorder .record::after {
 	left: 5px;
 	width:0px;
 	height:0px;
-	border-top: 15px solid #b7dae5;
+	border-top: 15px solid var(--color2);
 	border-right:2px solid transparent;
 	border-bottom:0px solid transparent;
 	border-left:2px solid transparent;
+	transition: border 1.5s cubic-bezier(0.71,0.12,0.34,0.97)
 
 }
 input[type=checkbox]:checked + #recorder .needle {
@@ -353,7 +471,7 @@ input[type=checkbox]:checked + #recorder .needle {
 		transform: rotate(-68deg)
 	}
 	1% {
-		transform: rotate(-46deg)
+		transform: rotate(-51deg)
 	}
 	100%{
 		transform: rotate(-46deg)
@@ -363,52 +481,35 @@ input[type=checkbox]:checked + #recorder .needle {
 }
 
 #recorder .circle {
-	width: 40px;
-	height: 40px;
+	width: 30px;
+	height: 30px;
 	position: absolute;
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%,-50%);
 	border-radius: 50%;
-	border: 15px solid #b7dae5;
+	border: 11px solid var(--color2);
+	transition: border 1.5s cubic-bezier(0.71,0.12,0.34,0.97)
 
 }
 .lyrics {
 	position: absolute;
-	border: 1px solid #000;
+	/* border: 1px solid #000; */
 	width: 324px;
 	height: 150px;
 	left: 0px;	
-	top: 350px;	
+	top: 380px;	
 }
 .lyric-hidden {
 	display: none
 }
-/* #lyric-1,#lyric-3 {
-	font-size: 12px;
-	color: rgba(11,57,24,0.5);
-	font-family: "kozuka medium";
-	margin-left: 30px;
-	font-weight: bold;
-	position: absolute;
-	left: 0;
-	transition: opacity 0.5s;
-	display: none;
-	text-align: center
-} */
-/* #lyric-1 {
-	top: 0px;
 
-}
-#lyric-3 {
-	top: 130px;
-} */
 
 #lyric-2,#lyric-2-blur {
 	/* display: block; */
 	font-size: 16px;
 	width: 100%;
-	color: #2e7fb0;
+	color: var(--color3);
 	font-family: "kozuka medium";
 	/* padding-left: 130px; */
 	position: absolute;
@@ -417,7 +518,7 @@ input[type=checkbox]:checked + #recorder .needle {
 	opacity: 0;
 	transform-origin: center bottom;
 	text-align: center;
-	border: 1px solid red;
+	/* border: 1px solid red; */
 }
 #lyric-2-blur {
 	/* opacity: 0.8; */
@@ -425,11 +526,95 @@ input[type=checkbox]:checked + #recorder .needle {
 	font-weight: lighter
 }
 
+#lyric-2.jump {
+	/* width: 0; */
+	display: inline-block;
+	position: absolute;
+	left: 10%;
+	top: 30%;
+	/* transform: translate(-50%, -50%) */
+}
+#lyric-2.jump span{
+	display: inline-block;
+	/* margin: 2px; */
+	padding: 1px;
+	background:  none;
+	/* letter-spacing: -1px */
+	animation: wordjump 4.5s  infinite step-end 
+}
+
+
+@keyframes wordjump {
+	0% {
+		transform: translate(2px, 1px) rotate(1deg)
+	}
+	5% {
+		transform: translate(1px, -1px) rotate(-2deg)
+	}
+	10% {
+		transform: translate(-1px, 1px) rotate(10deg)
+	}
+	15% {
+		transform: translate(1px, -3px) rotate(12deg)
+	}
+	20% {
+		transform: translate(3px, -1px) rotate(10deg)
+	}
+	25% {
+		transform: translate(-1px, 3px) rotate(-1deg)
+	}
+	30% {
+		transform: translate(1px, -2px) rotate(11deg)
+	}
+	35% {
+		transform: translate(-4px, 2px) rotate(-5deg)
+	}
+	40% {
+		transform: translate(-1px, 0px) rotate(10deg)
+	}
+	45% {
+		transform: translate(2px, -1px) rotate(5deg)
+	}
+	50% {
+		transform: translate(1px, -2px) rotate(-11deg)
+	}
+	55% {
+		transform: translate(3px, 0px) rotate(0deg)
+	}
+	60% {
+		transform: translate(1px, 0px) rotate(7deg)
+	}
+	65% {
+		transform: translate(-1px, -3px) rotate(0deg)
+	}
+	70% {
+		transform: translate(-3px, 1px) rotate(-12deg)
+	}
+	75% {
+		transform: translate(1px, -3px) rotate(13deg)
+	}
+	80% {
+		transform: translate(3px, -1px) rotate(0deg)
+	}
+	85% {
+		transform: translate(1px, -1px) rotate(11deg)
+	}
+	90% {
+		transform: translate(-1px, 1px) rotate(2deg)
+	}
+	95% {
+		transform: translate(1px, 0px) rotate(-17deg)
+	}
+	100% {
+		transform: translate(-2px, 0px) rotate(10deg)
+	}
+} 
+
 
 .keywords {
 	position: absolute;
 	right: -76px;
-	border: 1px solid #000;
+	/* border: 1px solid #000; */
 	top: 85px;
 	height: 435px;
 	width: 380px;
@@ -445,19 +630,21 @@ input[type=checkbox]:checked + #recorder .needle {
 	bottom: 2%;
 	font-weight:500;
 	transform: translateX(-50%);
-	color: #23668d;
-	text-shadow: 0 0 1px #23668d;
+	color: var(--color3);
+	text-shadow: 0 0 1px var(--color3);
+
 }
 .title::after{
 	content: "";
 	width: 55px;
 	height: 55px;
-	background-color: #afd4e9;
+	background-color: var(--color2);
 	border-radius: 50%;
 	position: absolute;
-	top: 18px;
-	left: 18px;
+	top: 13px;
+	left: 16px;
 	z-index: -1;
+	transition: background-color 1.2s cubic-bezier(0.71,0.12,0.34,0.97)
 
 }
 .keyworddiv {
@@ -466,7 +653,7 @@ input[type=checkbox]:checked + #recorder .needle {
 	padding: 0;
 	width: 200px;
 	height: 80px;
-	border: 1px solid red;
+	/* border: 1px solid red; */
 	z-index: 0
 	/* transition: all 1s linear */
 }
@@ -479,14 +666,13 @@ input[type=checkbox]:checked + #recorder .needle {
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%,-50%);
-	text-shadow: 0 0 1px #2e7fb0;
-	border: 1px solid #000;
-	/* transition: all 1.2s */
+	text-shadow: 0 0 1px var(--color3);
+
 }
 
 .keywords .keyword-1 {
 	font-family: "YuKyokasho Yoko";
-	color: #2e7fb0;
+	color: var(--color3);
 } 
 .keywords .keyworddiv-1 {
 	left: -13%;
@@ -494,8 +680,8 @@ input[type=checkbox]:checked + #recorder .needle {
 	transform: translate3d(0, 0, -100px)
 }
 .keywords .keyword-2{
-	font-family: "kumamoto";
-	color: #9cb5cf;
+	font-family: "Tsukushi B Round Gothic";
+	color: var(--color3);
 }
 .keywords .keyworddiv-2 {
 	right: 18%;
@@ -504,7 +690,7 @@ input[type=checkbox]:checked + #recorder .needle {
 }
 .keywords .keyword-3{
 	font-family: "Tsukushi B Round Gothic";
-	color: #0b3954;
+	color: var(--color1);
 } 
 .keywords .keyworddiv-3{
 	left: -3%;
@@ -513,7 +699,7 @@ input[type=checkbox]:checked + #recorder .needle {
 }
 .keywords .keyword-4{
 	font-family: "YuKyokasho Yoko";
-	color: #0b3954;
+	color: var(--color1);
 } 
 .keywords .keyworddiv-4 {
 	right: -8%;
@@ -522,7 +708,7 @@ input[type=checkbox]:checked + #recorder .needle {
 }
 .keywords .keyword-5{
 	font-family: "Hiragino Mincho ProN";
-	color: #4196a7;
+	color: var(--color5);
 } 
 .keywords .keyworddiv-5 {
 	left: 34%;
@@ -534,7 +720,8 @@ input[type=checkbox]:checked + #recorder .needle {
 	content: "";
 	width: 13px;
 	height: 13px;
-	background-color: #cee5f2;
+	background-color: var(--color4);
+	opacity: 0.7;
 	border-radius: 50%;
 	position: absolute;
 	top: 0px;
@@ -542,12 +729,14 @@ input[type=checkbox]:checked + #recorder .needle {
 	z-index: -1;
 	transition: all 1.3s ease-out;
 	
+	
 }
 .keyworda p {
 	animation-name: keymove;
 	animation-duration: 5s;
 	animation-timing-function: ease-in-out;
 	animation-iteration-count: infinite;
+	/* transition: color 1.5s cubic-bezier(0.71,0.12,0.34,0.97) */
 }
 @keyframes keymove {
 	0% {
@@ -568,11 +757,11 @@ input[type=checkbox]:checked + #recorder .needle {
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%,-50%);
-	background-color: #bfd7ea;
+	background-color: var(--color2);
 	transition: all 0.2s;
-	box-shadow: 2px 3px 1px #0b3954;
+	box-shadow: 2px 3px 1px var(--color1);
 	/* animation: none */
-	/* border: 3px solid #0b3954; */
+	/* border: 3px solid var(--color1); */
 
 }
 
@@ -588,7 +777,7 @@ input[type=checkbox]:checked + #recorder .needle {
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%,-50%);
-	border: 1px solid red;
+	/* border: 1px solid red; */
 	/* border: 1px solid #000; */
 	/* z-index: -1 */
 	display: none;
@@ -601,16 +790,10 @@ input[type=checkbox]:checked + #recorder .needle {
 	top: 100px;
 	left: 50%;
 	transform: translateX(-50%);
-	/* border: 2px solid #000; */
 	border-radius: 21px;
-	/* background: url('../images/tubomi.jpg'); */
 	background-size: 110%;
-	/* background-color: #fff; */
 	background-position: bottom center;
-	/* opacity: 0; */
-	/* clip-path: inset(0 100% 85% 0); */
-	/* animation: keyinfo_unfold 5s linear both; */
-	/* animation-delay: 2s; */：
+
 	e
 }
 .keyinfodiv h3 {
@@ -618,9 +801,9 @@ input[type=checkbox]:checked + #recorder .needle {
 	font-family: "YuKyokasho Yoko";
 	padding: 22px 0px 0px 25px;
 	font-size: 32px;
-	color: #0b3954;
-	text-shadow: 1px 1px 0px #bfd7ea,
-	2px 2px 0px #4196a7;
+	color: var(--color1);
+	text-shadow: 1px 1px 0px var(--color2),
+	2px 2px 0px var(--color5);
 	opacity: 0
 }
 .keyinfodiv h5 {
@@ -629,9 +812,16 @@ input[type=checkbox]:checked + #recorder .needle {
 	line-height: 40px;
 	font-family: "kozuka medium";
 	letter-spacing: 2px;
-	opacity: 0
+	opacity: 0;
+	color: var(--color1);
 	/* animation:  */
 }
+/* .keyinfo em.point {
+	font-style: normal;
+	display: inline-block;
+	font-size: 18px;
+	color: #a85981;
+} */
 .keyinfodiv-bottom{
 	/* animation:keyinfo_unfold 5s linear both; */
 	/* background-color: #fff */
@@ -654,13 +844,12 @@ input[type=checkbox]:checked + #recorder .needle {
   	background-size: cover;
   	z-index: 999;
   	transition: width 0.5s,height 0.5s;
-  	/* border: 1px solid red; */
-  	/* animation-name: close_in; */
-  	/* animation-direction:reverse ; */
   	display: none;
   	opacity: 0;
-  	animation-fill-mode: both
+  	animation-fill-mode: both;
+  	fill: #5f8258;
 }
+
 @keyframes play_in{
   0% {
     background-position: 0px 0px;
@@ -688,6 +877,52 @@ input[type=checkbox]:checked + #recorder .needle {
   	 background-position: 0px 0px;
   }
 }
+
+/* 用mask可以！但是不能直接套用，得先看透明度 */
+
+/* #close {
+	position: absolute;
+	top: 123px;
+	right: 83px;
+	mask: url('../images/close_in.svg') no-repeat 100% 100%;
+	mask-image: url('../images/close_in.svg');
+  	-webkit-mask-size: cover;
+  	mask-size: cover;
+	animation-duration: 2000ms;
+  	animation-timing-function: steps(120);
+  	width: 35px;
+  	height: 35px;
+  	z-index: 999;
+  	transition: width 0.5s,height 0.5s;
+  	display: none;
+  	opacity: 0;
+  	animation-fill-mode: both;
+  	background-color: #000;
+} */
+/* @keyframes play_in{
+  0% {
+    -webkit-mask-position: 0px 0px;
+  }
+  100% {
+    -webkit-mask-position: -4200px 0px;
+  }
+}
+@keyframes play_out{
+  0% {
+    -webkit-mask-position: 0px 0px;
+  }
+  100% {
+    -webkit-mask-position: -4200px 0px;
+  }
+}
+@keyframes play_out_reverse{
+  0% {
+    -webkit-mask-position: -4200px 0px;
+  }
+  100% {
+  	 -webkit-mask-position: 0px 0px;
+  }
+} */
 
 
 @keyframes keyinfo_unfold {
@@ -724,63 +959,7 @@ input[type=checkbox]:checked + #recorder .needle {
 		animation-timing-function: cubic-bezier(.68,0,.32,.99)
 	}
 }
-/* @keyframes keyinfo_fold{
-	
-} */
 
-/* .keyworda p:hover p::after{
-	width: 100%;
-	height: 100%;
-} */
-.range-slide {
-	position: absolute;
-	width: 750px;
-	height: 100px;
-	right: -120px;
-	top: -45px;
-	border: 1px solid #000;
-}
-.waves {
-	width: 100%;
-	height: 20%;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	border: 1px solid #000;
-	overflow: hidden;
-	z-index: -999
-
-}
-.waves img {
-	position: absolute;
-	width: 150%;
-	position: absolute;
-	left:0;
-	bottom: -30%;
-	z-index: -1;
-	
-}
-.waves img:first-child {
-	/* animation: move_wave 5s linear infinite alternate; */
-	/* animation-delay: 1s */
-}
-.waves img:last-child {
-	/* animation: move_wave 5s linear infinite alternate; */
-	animation-delay: 3s
-}
-
-
-@keyframes move_wave {
-    0% {
-        transform: translateX(0) translateZ(0) scaleY(1)
-    }
-    50% {
-        transform: translateX(-15%) translateZ(0) scaleY(0.55)
-    }
-    100% {
-        transform: translateX(-30%) translateZ(0) scaleY(1)
-    }
-}
 
 
 .ocean { 
@@ -789,16 +968,16 @@ input[type=checkbox]:checked + #recorder .needle {
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	border: 1px solid #000;
+	/* border: 1px solid #000; */
 	border-radius: 0 0 50px 50px;
 	overflow: hidden;
 	z-index: -999
 }
 
 .wave {
-  background: url(../images/waveblue1.svg) repeat-x; 
+  background: var(--wave1) repeat-x; 
   position: absolute;
-  top: 20%;
+  top: 30%;
   width: 300%;
   height: 90%;
   animation: wave 7s cubic-bezier( 0.36, 0.45, 0.63, 0.53) infinite;
@@ -806,13 +985,13 @@ input[type=checkbox]:checked + #recorder .needle {
 }
 
 .wave:nth-child(1) {
-  top: 30%;
+  top: 35%;
   animation: wave 18s cubic-bezier( 0.36, 0.45, 0.63, 0.53) -.125s infinite, swell 20s ease -1.25s infinite;
   opacity: 1;
 }
 .wave:nth-child(2) {
-	background: url(../images/waveblue2.svg) repeat-x; 
-  top: 30%;
+	background: var(--wave2) repeat-x; 
+  top: 35%;
   animation: wave 18s cubic-bezier( 0.36, 0.45, 0.63, 0.53) -.125s infinite, swell 15s ease -1.25s infinite;
   animation-delay: -9s;
   opacity: 1;
@@ -848,8 +1027,23 @@ input[type=checkbox]:checked + #recorder .needle {
 }
 
 
-
-
+.pagenum {
+	position: absolute;
+	left: 30px;
+	bottom: 30px;
+	color: #fff;
+	font-size: 10px;
+	/* border: 1px solid #000; */
+	font-family: "Ayuthaya"
+}
+span#line {
+	width: 65px;
+	height: 2px;
+	background-color: #fff;
+	position: absolute;
+	left: 25px;
+	top: 10px;
+}
 
 
 @font-face{
@@ -860,10 +1054,6 @@ input[type=checkbox]:checked + #recorder .needle {
      font-family: 'kumamoto'; 
      src: url('../font/kumamoto.otf') format('opentype');
 }
-/* @font-face{
-     font-family: 'kozuka extralight'; 
-     src: url('../font/KozMinPro-ExtraLight.otf') format('opentype');
-} */
 @font-face{
      font-family: 'kozuka medium'; 
      src: url('../font/KozMinPro-Medium.otf') format('opentype');
@@ -871,18 +1061,18 @@ input[type=checkbox]:checked + #recorder .needle {
 
 /* rangeslide */
 	#dragnav {
-		border: 1px solid red;
+		/* border: 1px solid red; */
 		display: inline-block;
 		width: 900px;
 		height: 100px;
 		position: absolute;
-		top: 5%;
+		top: 4%;
 		left: 50%;
 		transform: translate(-11%,25%);
 		z-index: 999
 	}
 	#dragpath {
-		border: 1px solid yellow;
+		/* border: 1px solid yellow; */
 		display: inline-block;
 		/* border: 1px solid #fff; */
 	}
@@ -893,23 +1083,31 @@ input[type=checkbox]:checked + #recorder .needle {
 		height: 100px;
 		position:absolute; 
 		left:0; 
-		top: 0;
+		top: -10px;
 	}
 
 	
 	svg .knob {
 		width: 100px;
 		height: 100px;
-		border: 1px solid #000;
-		box-shadow: 1px 1px 0 #fff
+		fill: var(--knob);
+		/* border: 1px solid #000; */
+		box-shadow: 1px 1px 0 #fff;
+		/* filter: drop-shadow(red 80px 0) */
+		filter: url(#dropshadow);
+		transition: fill 1.5s cubic-bezier(0.71,0.12,0.34,0.97);
+
 	}
 	#lfknob {
 		width: 60px;
 		height: 60px;
 		position: absolute;
-		border: 1px solid blue;
+		/* border: 1px solid blue; */
 		top: 12px;
 		left: 25px;
+		transform: translate(393px, -32px)
+		/* top: -10px; */
+		/* left: 470px; */
 	}
 	#dragspan {
 		/* border: 1px solid green; */
@@ -945,8 +1143,11 @@ input[type=checkbox]:checked + #recorder .needle {
 		margin-left:5px;
 		background-color: #fff;
 		border-radius: 2px;
-		transition: transform 0.5s
+		/* transition: transform 0.5s */
+		/* transition: transform 0.5s */
+		transition: all 1s ease;
 		/* display: inline-block; */
+		transition: background-color 1.5s cubic-bezier(0.71,0.12,0.34,0.97)
 	}
 	
 	div.drag span:first-child {
@@ -954,19 +1155,19 @@ input[type=checkbox]:checked + #recorder .needle {
 		width: 8px;
 		height: 45px;
 		border-radius: 6px;
-		background-color: #c1e4e9;
+		background-color: var(--color4);
 	}
 	div.drag span:nth-child(2){
-		background-color: #23668d;
+		background-color: var(--color10);
 	}
 	div.drag span:nth-child(3){
-		background-color: #bfd7ea;
+		background-color: var(--color2);
 	}
 	div.drag span:nth-child(4){
-		background-color: #2e7fb0;
+		background-color: var(--color3);
 	}
 	div.drag span:nth-child(5){
-		background-color: #4196a7;
+		background-color: var(--color5);
 	}
 	
 	
@@ -976,7 +1177,7 @@ input[type=checkbox]:checked + #recorder .needle {
 		height: 45px;
 		margin-top:55px;
 		border-radius: 6px;
-		background-color: #c1e4e9;
+		background-color: var(--color4);
 	}
 
 
@@ -1124,30 +1325,128 @@ input[type=checkbox]:checked + #recorder .needle {
 	div.drag:nth-child(9) span:nth-child(5){
 		margin-top:50px
 	}
+	div.drag span.addnum::after {
+		content: attr(data-attr);
+		/* background-color: red; */
+		font-family: "Ayuthaya";
+		font-size: 14px;
+		position: absolute;
+		color: var(--color3);
+		text-shadow: 0 0 2px var(--color3);
+		left: -16px;
+		top: 60px;
+		font-weight: lighter;
+		letter-spacing: 2px;
+		transform-origin: center bottom;
+		animation: addnum 6s ease-in both;
+    	transition: color 1.5s cubic-bezier(0.71,0.12,0.34,0.97)
+		
+	}
 
-/* .drag span .span_up {
-		transform: translate(0,-10px)
-	} */
+	@keyframes addnum {
+		0% {
+			opacity: 0;
+			transform: scaleY(0.9)
+		}
+		15% {
+			opacity: 1;
+			transform: scaleY(1)
+		}
+		93% {
+			opacity: 1;
+			transform: scaleY(1)
+		}
+		100%{
+			opacity: 0;
+			transform: scaleY(0.9)
+		}
+	}
 
 
+	#lastspan.addnum::after{
+		content: attr(data-attr);
+		font-family: "Ayuthaya";
+		font-size: 14px;
+		position: absolute;
+		color: var(--color3);
+		text-shadow: 0 0 2px var(--color3);
+		left: -14px;
+		top: 60px;
+		font-weight: lighter;
+		letter-spacing: 2px;
+		transition: color 1.5s cubic-bezier(0.71,0.12,0.34,0.97)
+	
+	}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.maintrans {
+	width: 64%;
+	height: 66%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	border-radius: 50px;
+	pointer-events: none;
+	/* display: none; */
+	/* border: 1px solid #000; */
+}
+.maintrans .musiccardtrans {
+	position: absolute;
+	width: 450px;
+	height: 100%;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	/* display: none; */
+}
+.maintrans .postertrans {
+	width: 420px;
+	height: 420px;
+	position:absolute;
+	top: 80px;
+	left: 50%;
+	transform: translateX(-50%);
+	background-image: var(--poster2);
+	border: 20px solid var(--nextcardcolor);
+	background-size: 110%;
+	background-position: 60% 50%;
+	border-radius: 40px;
+	opacity: 0;
+	box-sizing: border-box;
+	/* display: none; */
+}
+/* .main {
+	width: 64%;
+	height: 66%;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+	border-radius: 50px;
+	background-color: #fff;
+	box-shadow: 9px 14px 17px 5px rgba(0,0,0,0.3)
+} */
+/* .musiccard{
+	position: absolute;
+	width: 450px;
+	height: 100%;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%,-50%);
+}
+.musiccard .poster{
+	width: 420px;
+	height: 420px;
+	position:absolute;
+	top: 80px;
+	left: 50%;
+	transform: translateX(-50%);
+	border: 20px solid var(--color8);
+	border-radius: 40px;
+	background: var(--poster);
+	background-size: 110%;
+	background-position: 60% 50%;
+	transition: border 1.5s cubic-bezier(0.71,0.12,0.34,0.97)
+	
+} */

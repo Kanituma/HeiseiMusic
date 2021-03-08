@@ -12,7 +12,7 @@ function page1(){
 	document.documentElement.style.setProperty('--color10', "#7D98A1");
 	document.documentElement.style.setProperty('--knob', "#F19143");
 	document.documentElement.style.setProperty('--poster', "url('../images/love.jpg')");
-	document.documentElement.style.setProperty('--bg', "url(../images/lovebg.png)");
+	document.documentElement.style.setProperty('--bg', "url(../images/lovebg.jpg)");
 	document.documentElement.style.setProperty('--wave1', "url(../images/wavelove1.svg)");
 	document.documentElement.style.setProperty('--wave2', "url(../images/wavelove2.svg)");
 	
@@ -51,7 +51,7 @@ function page2(){
 	document.documentElement.style.setProperty('--color10', "#000");
 	document.documentElement.style.setProperty('--knob', "#F19143");
 	document.documentElement.style.setProperty('--poster', "url('../images/tenshi.jpg')");
-	document.documentElement.style.setProperty('--bg', "url(../images/tenshibg2.png)");
+	document.documentElement.style.setProperty('--bg', "url(../images/tenshibg.jpg)");
 	document.documentElement.style.setProperty('--wave1', "url(../images/wavetenshi1.svg)");
 	document.documentElement.style.setProperty('--wave2', "url(../images/wavetenshi2.svg)");
 	$("#bgprofile")[0].src = "images/tenshisinger.png"
@@ -89,7 +89,7 @@ function page3(){
 	document.documentElement.style.setProperty('--color10',"#ffd99b");
 	document.documentElement.style.setProperty('--knob', "#98528f");
 	document.documentElement.style.setProperty('--poster', "url('../images/kibou.jpg')");
-	document.documentElement.style.setProperty('--bg', "url(../images/kiboubg.png)");
+	document.documentElement.style.setProperty('--bg', "url(../images/kiboubg.jpg)");
 	document.documentElement.style.setProperty('--wave1', "url(../images/wavekibou1.svg)");
 	document.documentElement.style.setProperty('--wave2', "url(../images/wavekibou2.svg)");
 	$("#bgprofile")[0].src = "images/kibousinger.png"
@@ -127,7 +127,7 @@ function page4(){
 	document.documentElement.style.setProperty('--color10', "#789abb");
 	document.documentElement.style.setProperty('--knob', "#bb93a3");
 	document.documentElement.style.setProperty('--poster', "url('../images/secret.jpg')");
-	document.documentElement.style.setProperty('--bg', "url(../images/secretbg.png)");
+	document.documentElement.style.setProperty('--bg', "url(../images/secretbg.jpg)");
 	document.documentElement.style.setProperty('--wave1', "url(../images/wavesecret1.svg)");
 	document.documentElement.style.setProperty('--wave2', "url(../images/wavesecret2.svg)");
 	$("#bgprofile")[0].src = "images/secretsinger.png"
@@ -165,10 +165,10 @@ function page5(){
 	document.documentElement.style.setProperty('--color10', "#174fbb");
 	document.documentElement.style.setProperty('--knob', "#d4120f");
 	document.documentElement.style.setProperty('--poster', "url('../images/amigo.jpg')");
-	document.documentElement.style.setProperty('--bg', "url(../images/amigobg.png)");
+	document.documentElement.style.setProperty('--bg', "url(../images/amigobg.jpg)");
 	document.documentElement.style.setProperty('--wave1', "url(../images/waveamigo1.svg)");
 	document.documentElement.style.setProperty('--wave2', "url(../images/waveamigo2.svg)");
-	$("#bgprofile")[0].src = "images/amigosinger.png"
+	$("#bgprofile")[0].src = "images/amigosinger.jpg"
 	// console.log()
 	setTimeout(function(){$(".keyworda p").css("transition","none ")},100);
 	$(".tagtop p")[0].innerHTML = 2005;
@@ -203,7 +203,7 @@ function page6(){
 	document.documentElement.style.setProperty('--color10', "#23668d");
 	document.documentElement.style.setProperty('--knob', "#448aca");
 	document.documentElement.style.setProperty('--poster', "url('../images/tubomi.jpg')");
-	document.documentElement.style.setProperty('--bg', "url(../images/tubomibg.png)");
+	document.documentElement.style.setProperty('--bg', "url(../images/tubomibg.jpg)");
 	document.documentElement.style.setProperty('--wave1', "url(../images/waveblue1.svg)");
 	document.documentElement.style.setProperty('--wave2', "url(../images/waveblue2.svg)");
 	setTimeout(function(){$(".keyworda p").css("transition","none ")},100);
@@ -240,7 +240,7 @@ function page7(){
 	document.documentElement.style.setProperty('--color10', "#8dbfb0");
 	document.documentElement.style.setProperty('--knob', "#F19143");
 	document.documentElement.style.setProperty('--poster', "url('../images/kiseki.jpg')");
-	document.documentElement.style.setProperty('--bg', "url(../images/kisekibg.png)");
+	document.documentElement.style.setProperty('--bg', "url(../images/kisekibg.jpg)");
 	document.documentElement.style.setProperty('--wave1', "url(../images/wavekiseki1.svg)");
 	document.documentElement.style.setProperty('--wave2', "url(../images/wavekiseki2.svg)");
 	$("#bgprofile")[0].src = "images/kisekisinger.png"
@@ -278,7 +278,7 @@ function page8(){
 	document.documentElement.style.setProperty('--color10', "#c0d5eb");
 	document.documentElement.style.setProperty('--knob', "#F19143");
 	document.documentElement.style.setProperty('--poster', "url('../images/ninjya.jpg')");
-	document.documentElement.style.setProperty('--bg', "url(../images/ninjyabg.png)");
+	document.documentElement.style.setProperty('--bg', "url(../images/ninjyabg.jpg)");
 	document.documentElement.style.setProperty('--wave1', "url(../images/waveorange1.svg)");
 	document.documentElement.style.setProperty('--wave2', "url(../images/waveorange2.svg)");
 	$("#bgprofile")[0].src = "images/ninjyasinger.png"
@@ -316,7 +316,7 @@ function page9(){
 	document.documentElement.style.setProperty('--color10', "#55286F");
 	document.documentElement.style.setProperty('--knob', "#F19143");
 	document.documentElement.style.setProperty('--poster', "url('../images/katame.jpg')");
-	document.documentElement.style.setProperty('--bg', "url(../images/katamebg.png)");
+	document.documentElement.style.setProperty('--bg', "url(../images/katamebg.jpg)");
 	document.documentElement.style.setProperty('--wave1', "url(../images/wavekatame1.svg)");
 	document.documentElement.style.setProperty('--wave2', "url(../images/wavekatame2.svg)");
 	$("#bgprofile")[0].src = "images/katamesinger.png"
@@ -355,7 +355,7 @@ function page10(){
 	document.documentElement.style.setProperty('--color10', "#78bebb");
 	document.documentElement.style.setProperty('--knob', "#5f8258");
 	document.documentElement.style.setProperty('--poster', "url('../images/lemon.jpg')");
-	document.documentElement.style.setProperty('--bg', "url(../images/lemonbg.png)");
+	document.documentElement.style.setProperty('--bg', "url(../images/lemonbg.jpg)");
 	document.documentElement.style.setProperty('--wave1', "url(../images/wavegreen1.svg)");
 	document.documentElement.style.setProperty('--wave2', "url(../images/wavegreen2.svg)");
 	$("#bgprofile")[0].src = "images/lemonsinger.png"
