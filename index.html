@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>heisei music</title>
+	<link rel="stylesheet" href="css/stylevariabletest.css" type="text/css" />
+	<link rel="icon" href="images/icon.png" type="image/x-icon">
+</head>
+<body>
+
+	<div class="cursorWrapper">
+		<div class="cross"></div>
+	</div>
+
+	<div class="logo"></div>
+	<div class="bgcover"></div>
+	<div class="bgcover2" style="opacity: 0"></div>
+	<div class="bg"></div>
+	<div class="bg2" style="opacity: 0"></div>
+	<!-- <canvas id="noise"></canvas> -->
+	<div class="main">
+		
+		<!-- <div class="cover">
+			<div class="coverall"></div>
+		</div> -->
+		<canvas id="noise"></canvas>
+		<div class="bgpics">
+
+			<div class="bgcircle"></div>
+			<img src="images/kobu.png" alt="" id="bgprofile">
+		</div>
+		<div class="tag">
+		<div class="tagtop"><p>2007</p></div>
+		<div class="tagbottom"></div>
+		<div class="tagcircle"></div>
+		</div>
+		<div class="lyrics">
+		<div id="lyric-2" class="lyric-none">蕾が 今年も 僕を待ってる</div>
+		
+		</div>
+		<div class="musiccard">
+			<div class="poster"></div>
+			<audio src="music/love.mp3" id="myAudio" class="loveaudio" ></audio>   
+			<!-- 歌词换行 -->
+			<audio src="music/tenshi.mp3" id="myAudio" class="tenshiaudio" ></audio>
+			<audio src="music/kibou.mp3" id="myAudio" class="kibouaudio" ></audio>
+			<audio src="music/secret.mp3" id="myAudio" class="secretaudio" ></audio>
+			<audio src="music/amigo.mp3" id="myAudio" class="amigoaudio" ></audio>
+			<audio src="music/tubomi.mp3" id="myAudio" class="tubomiaudio" ></audio>
+			<audio src="music/kiseki.mp3" id="myAudio" class="kisekiaudio" ></audio>
+			<audio src="music/ninjya.mp3" id="myAudio" class="ninjyaaudio" >sorry听不到歌了！</audio>
+			<audio src="music/katame.mp3" id="myAudio" class="katameaudio" ></audio>
+			<audio src="music/lemon.mp3" id="myAudio" class="lemonaudio">
+				sorry听不到歌了！
+			</audio>
+			<label for="recordcb"></label>
+			<input type="checkbox" id="recordcb">
+			
+			<div id="recorder">
+				<div class="record"></div>
+				<div class="circle"></div>
+				<div class="needle">
+				</div>
+			</div>
+			<div class="keyinfo">
+				<div class="keyinfodiv keyinfodiv-bottom">
+					
+				</div>
+
+				<div class="keyinfodiv keyinfodiv-1">
+					<h3>つぼみ</h3>
+					<h5>2007年3月にリリースされたコブクロ14作目のシングル「蕾」。 この曲はヒット曲「桜」を上回る販売枚数を記録し、 オリコン週間シングルチャートで初の1位獲得、 日本レコード大賞を受賞するなどの快挙を果たしました。</h5>
+				</div>
+				<div class="keyinfodiv keyinfodiv-2">
+					<h3>コブクロ</h3>
+					<h5>コブクロは、黒田俊介と小渕健太郎からなる日本の音楽デュオである。所属レーベルはワーナーミュージック・ジャパン。所属芸能事務所はミノスケオフィスコブクロで、研音と業務提携している。</h5>
+				</div>
+				<div class="keyinfodiv keyinfodiv-3">
+					<h3>２００７年</h3>
+					<h5>西暦2007年は平成19年です。10代から20代を中心としたケータイ小説ブームにより、文芸書の年間ベストセラーランキングでトップ3をケータイ小説書籍が独占した</h5>
+				</div>
+				<div class="keyinfodiv keyinfodiv-4">
+					<h3>東京タワー</h3>
+					<h5>東京タワー 〜オカンとボクと、時々、オトン〜』（とうきょうタワー オカンとボクと、ときどき、オトン）は、リリー・フランキーの同名小説を原作とした日本のテレビドラマ。<br/>放送期間‎: ‎2007年‎1月8日‎ - ‎3月19日</h5>
+				</div>
+				<div class="keyinfodiv keyinfodiv-5">
+					<h3>亡き母へ捧げる</h3>
+					<h5>”消えそうに咲きそうな蕾”というフレーズを亡き母に重ねて歌われています。この言葉の解釈としては、「蕾」のことを、弱々しく見える一面がありながらもたくましく咲くかもしれないという可能性を秘めていることを表現しているのだと思います。</h5>
+				</div>
+				<div class="close" id="close"></div>
+				<img src="images/close_in.svg" style="display:none;" alt="" />
+				<img src="images/close_out.svg" style="display:none;" alt="" />
+				<img src="images/close_out_reverse.svg" style="display:none;" alt="" />
+			</div>
+			
+		</div>
+
+		<div class="keywords">
+			<div class="title">蕾</div>
+			<div class="keyworddiv keyworddiv-1"><a href="#" class="keyworda keyword-1"><p>つぼみ</p></a></div>
+			<div class="keyworddiv keyworddiv-2"><a href="#" class="keyworda keyword-2"><p>コブクロ</p></a></div>
+			<div class="keyworddiv keyworddiv-3"><a href="#" class="keyworda keyword-3"><p>２００７年</p></a></div>
+			<div class="keyworddiv keyworddiv-4"><a href="#" class="keyworda keyword-4"><p>東京タワー</p></a></div>
+			<div class="keyworddiv keyworddiv-5"><a href="#" class="keyworda keyword-5"><p>亡き母へ捧げる</p></a></div>
+		</div>
+		
+		<div class="ocean">
+			
+	 	 	<div class="wave"></div>
+	  		<div class="wave"></div>
+		</div>
+		<!-- <div class="pagenum">
+			<h2>01</h2>
+			<span id="line"></span>
+		</div> -->
+	</div>
+	
+<div id="dragnav">
+	<!-- 用来修改.addnum::after的content值 -->
+	<!-- <div id="yearnum" data-attr="20017"></div> -->
+	<!-- <img src="images/rangetest.jpg" alt=""> -->
+	<div id="dragspan">
+		<div class="drag">
+			<span id="color1" data-attr="1991"></span>
+			<!-- 1.突如其来爱情故事 随便 -->
+			<span id="color2"></span>
+			<span id="color3"></span>
+			<span id="color4"></span>
+			<span id="color5"></span>
+			
+		</div>
+		<div class="drag">
+			<span id="color1" data-attr="1995"></span>
+			<!-- 2.残酷天使 黑白-->
+			<span id="color2"></span>
+			<span id="color3"></span>
+			<span id="color4"></span>
+			<span id="color5"></span>
+		</div>
+		<div class="drag">
+			<span id="color1" data-attr="1998"></span> 
+			<!-- 3.希望之辙 蓝紫色-->
+			<span id="color2"></span>
+			<span id="color3"></span>
+			<span id="color4"></span>
+			<span id="color5"></span>
+		</div>
+		<div class="drag">
+			<span id="color1" data-attr="2001"></span> 
+			<!-- 4.有了 secret 浅粉色 -->
+			<span id="color2"></span>
+			<span id="color3"></span>
+			<span id="color4"></span>
+			<span id="color5"></span>
+		</div>
+		<div class="drag">
+			<span id="color1" data-attr="2005"></span> 
+			<!-- 5.有了　namida 红色-->
+
+			<span id="color2"></span>
+			<span id="color3"></span>
+			<span id="color4"></span>
+			<span id="color5"></span>
+		</div>
+		<div class="drag">
+			<span id="color1" data-attr="2007"></span>  
+			<!-- 6.有了 tubomi 蓝色-->
+			<span id="color2"></span>
+			<span id="color3"></span>
+			<span id="color4"></span>
+			<span id="color5"></span>
+		</div>
+		<div class="drag">
+			<span id="color1" data-attr="2008"></span> 
+			<!-- 7.有了 キセキ 黄色 -->
+			<span id="color2"></span>
+			<span id="color3"></span>
+			<span id="color4"></span>
+			<span id="color5"></span>
+		</div>
+		<div class="drag">
+			<span id="color1" data-attr="2014"></span>  
+			<!-- 8.有了 ninjya 橙色-->
+			<span id="color2"></span>
+			<span id="color3"></span>
+			<span id="color4"></span>
+			<span id="color5"></span>
+		</div>
+		<div class="drag">
+			<span id="color1" data-attr="2016"></span>  
+			<!-- 9.katame 粉紫色 -->
+			<span id="color2"></span>
+			<span id="color3"></span>
+			<span id="color4"></span>
+			<span id="color5"></span>
+		</div>
+		<span id="lastspan" data-attr="2018"></span>
+		<!-- 10. lemon 绿色 -->
+	</div>
+	<label id="lfknob" for="knob"></label>
+	<div id="dragpath">
+		<svg width="750px" height="100px" version="1.1" xmlns="http://www.w3.org/2000/svg" viewbox= "0 0 900 100">
+			 <path id="rangepath" d="M22,54.9c0,0,53.6,18.2,86.9-19.3c23.8,11.4,59.5,30.7,84.5,4.6c33.3,14.8,53.6,35.3,85.7,12.5c21.4,2.3,25,12.5,86.9,10.2c22.6-4.6,73.8-21.6,84.5-36.4c25,14.8,67.9,28.4,82.2,25c10.7,8,79.8,3.4,89.3-9.1c14.3,25,38.1,45.5,83.3,30.7c34.5-4.6,44.1-15.9,84.5,11.4" stroke-dasharray="5,5" fill="transparent"/>
+			 <!-- stroke="gray" -->
+			<polygon class="knob" id="knob" points="23.1,55 28.7,38 17.6,38" fill="#448aca"/>
+			<!-- <polygon class="knob" id="knob" points="443.1,33 448.7,16 437.6,16" fill="#448aca"/> -->
+			
+
+			
+			<!-- <script></script> -->
+		</svg>
+	</div>
+</div>
+<svg id="morph" height="100%" width="100%" viewbox="0 0 1920 1080" preserveAspectRatio="none">
+	<path class="morph" d="M805,744.7c-27.4,0-49.7-22.3-49.7-49.7V385c0-27.4,22.3-49.7,49.7-49.7h310c27.4,0,49.7,22.3,49.7,49.7v310
+	c0,27.4-22.3,49.7-49.7,49.7H805z"></path>
+</svg>
+<div class="maintrans">
+	<div class="musiccardtrans">
+		<div class="postertrans">
+			<img src="images/tubomi.jpg" style="display: none" alt="">
+			<img src="images/lemon.jpg" style="display: none" alt="">
+		</div>
+	</div>
+</div>
+<svg>
+
+	<filter id="blur">
+            <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+          </filter> 
+</svg>
+<svg>
+    <filter id="dropshadow" x="0" y="0" width="200%" height="200%">
+      <feOffset result="offOut" in="SourceAlpha" dx="3" dy="2" />
+      <feGaussianBlur result="blurOut" in="offOut" stdDeviation="1" />
+      <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+
+    </filter>
+</svg>
+
+  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <!-- 引用一个jqueryui 可以加多一个过渡时间参数 -->
+  <script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+  crossorigin="anonymous"></script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/TweenMax.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.3/utils/Draggable.min.js'></script>
+<script src="js/CustomEase.min.js"></script>
+<script>
+	TweenMax.set([".main",".bg",".bgcover",".bgpics .bgcircle",".bgpics img",".musiccard",".tag",".musiccard #recorder",".keywords",".ocean","#dragnav",".logo"],{opacity:0})
+	var pageLoad = new TimelineMax();
+	pageLoad
+		.fromTo(".main",1.5,{opacity:0,yPercent:3},{opacity:1,delay:0.7,yPercent:0,ease:Circ.easeOut})
+		.fromTo(".bg",2,{opacity:0,ease:Power4.easeOut},{opacity:1},"-=1.5")
+		.fromTo(".musiccard",1,{yPercent:-3},{autoAlpha:1,yPercent:0},"-=1.5")
+		.fromTo(".bgcover",1,{opacity:0},{opacity:0.59,ease: Sine.easeInOut},"-=1.5")
+		.fromTo(".musiccard #recorder",0.8,{yPercent:40,opacity:0},{yPercent:0,opacity:1},"-=2")
+		.fromTo(".keywords",0.5,{yPercent:3},{yPercent:0,opacity:1},"-=2")
+		.fromTo([".bgpics .bgcircle",".bgpics img"],1,{yPercent:3},{opacity:1,yPercent:0},"-=1.5")
+		.fromTo(".logo",0.8,{opacity:0,xPercent:6},{opacity:1,xPercent:0})
+		.fromTo(".tag",1,{rotation:-20,opacity:0},{opacity:1,rotation:0,ease: Elastic.easeOut.config(1, 0.4)},"-=2")
+		.fromTo(".ocean",1.8,{yPercent:10},{opacity:1,yPercent:0},"-=1")
+		.fromTo("#dragnav",2.8,{yPercent:-10},{opacity:1,yPercent:0,ease:Back.easeOut.config(4)},"-=2.3")
+
+		var page1 = new Function();
+
+	
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.2.0/anime.min.js"></script>
+<script>
+	var morphing = anime({
+		targets:".morph",
+		d:[
+			{value:"M471,891.3c-27.2,0-49.3-22.1-49.3-49.3V300c0-27.2,22.1-49.3,49.3-49.3h978c27.2,0,49.3,22.1,49.3,49.3v542c0,27.2-22.1,49.3-49.3,49.3H471z"},
+			{value:'M37.6,1076.8c-19.5,0-35.4-15.9-35.4-35.4V38.6c0-19.5,15.9-35.4,35.4-35.4h1844.8c19.5,0,35.4,15.9,35.4,35.4v1002.8c0,19.5-15.9,35.4-35.4,35.4H37.6z'}
+		],
+		easing:"easeInOutQuint",
+		duration:1000,
+		loop:false,
+		autoplay:false
+	})
+</script>
+<script src="js/pagetransition.js"></script>
+ <script  src="js/lyrics.js"></script>
+ <script  src="js/keywords.js"></script>
+<script src="js/rangedrag.js"></script>
+<script src="js/noise.js"></script>
+
+</body>
+</html>
